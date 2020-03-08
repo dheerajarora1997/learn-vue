@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue Js</title>
     <script src="https://vuejs.org/js/vue.js"></script>
+    <style>
+        .redOutline{
+            border: 1px solid red;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,6 +26,15 @@
         <p :style="{backgroundColor : result}">{{result}}</p>
         <hr>
         <p>coordinate : {{x}} / {{y}} </p>
+        <hr>
+        <div @click="attachRed = !attachRed" :class="{redOutline : attachRed}">this is a blank div</div>
+        <hr>
+        <ul>
+            <li v-for="(fruit, index) in fruits">{{fruit}} {{index}}</li>
+        </ul>
+        <template v-for="person in persons">
+            <div v-for="(value, key) in person">{{key}}{{value}}</div>
+        </template>
     </div>
     <script src="main.js"></script>
 </body>

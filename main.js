@@ -8,6 +8,24 @@ new Vue({
         x: '0',
         y: '0',
         result: '',
+        attachRed: false,
+        fruits: ['Apple', 'Banana', 'Orange', 'Pineapple'],
+        persons: [{
+                name: 'John',
+                age: 22,
+                location: 'USA'
+            },
+            {
+                name: 'Miles',
+                age: 62,
+                location: 'Canada'
+            },
+            {
+                name: 'David',
+                age: 32,
+                location: 'United Kingdom'
+            }
+        ]
 
     },
     methods: {
@@ -23,6 +41,13 @@ new Vue({
             this.x = event.clientX;
             this.y = event.clientY;
         }
-
+    },
+    watch: {
+        count: function (value) {
+            var vm = this;
+            setTimeout(function () {
+                vm.count = 0;
+            }, 2000);
+        }
     }
 })
