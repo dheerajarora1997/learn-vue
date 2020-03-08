@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Js</title>
+    <script src="https://vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" v-on:mousemove="updateCoordinate">
+        <h1 v-once>{{title}}</h1>
+        <p>{{ sayHello() }}</p>
+        <a :href="link" >Google</a>
+        <hr>
+        <p v-html="completeLink"></p>
+        <hr>
+        <button v-on:click="counter">click - {{count}}</button>
+        <p :style="{backgroundColor : result}">{{result}}</p>
+        <hr>
+        <p>coordinate : {{x}} / {{y}} </p>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
