@@ -25,7 +25,8 @@ new Vue({
                 age: 32,
                 location: 'United Kingdom'
             }
-        ]
+        ],
+        condition: true,
 
     },
     methods: {
@@ -40,6 +41,9 @@ new Vue({
         updateCoordinate: function (event) {
             this.x = event.clientX;
             this.y = event.clientY;
+        },
+        switchCondition: function () {
+
         }
     },
     watch: {

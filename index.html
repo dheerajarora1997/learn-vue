@@ -27,7 +27,7 @@
         <hr>
         <p>coordinate : {{x}} / {{y}} </p>
         <hr>
-        <div @click="attachRed = !attachRed" :class="{redOutline : attachRed}">this is a blank div</div>
+        <div @click="attachRed = !attachRed" :class="{redOutline : attachRed}">Click me to add a class</div>
         <hr>
         <ul>
             <li v-for="(fruit, index) in fruits">{{fruit}} {{index}}</li>
@@ -35,6 +35,12 @@
         <template v-for="person in persons">
             <div v-for="(value, key) in person">{{key}}{{value}}</div>
         </template>
+        <template>
+            <p v-if="condition">First condition</p>
+            <p v-else>Sec condition</p>
+            <button @click="condition = !condition">Switch</button>
+        </template>
+
     </div>
     <script src="main.js"></script>
 </body>
