@@ -41,7 +41,7 @@
                         <button class="btn btn-lg btn-warning" @click="splAttack">Special Attack</button>
                         <button class="btn btn-lg btn-danger" @click="quit">Quit</button>
                     </div>
-                    <div class="shadow p-2" v-if="turns = 0">
+                    <div class="shadow p-2" v-if="turns.length > 0">
                         <ul>
                             <li v-for="turn in turns">
                                 {{turn.text}}
@@ -49,6 +49,9 @@
                         </ul>
 
                     </div>
+                    <div class="alert alert-danger" role="alert" v-else>
+                        Monster will Hit you every single click after the game start!
+                      </div>
                 </div>
             </div>
         </div>
