@@ -8,10 +8,32 @@
     <title>Vue Js</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://vuejs.org/js/vue.js"></script>
+    <style>
+        ul{
+            list-style: none;
+        }
+        ul li{
+            padding: 0.5em 1em;
+            margin-bottom: 1em;
+        }
+        .player-attack{
+            color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+
+        }
+        .monster-attack{
+            color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
+
 
         <div class="jumbotron">
             <div class="container">
@@ -42,8 +64,9 @@
                         <button class="btn btn-lg btn-danger" @click="quit">Quit</button>
                     </div>
                     <div class="shadow p-2" v-if="turns.length > 0">
-                        <ul>
-                            <li v-for="turn in turns">
+                        <ul class="p-0">
+                            <li v-for="turn in turns"
+                                :class="{'player-attack' : turn.isPlayer, 'monster-attack' : !turn.isPlayer}">
                                 {{turn.text}}
                             </li>
                         </ul>
