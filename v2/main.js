@@ -7,7 +7,7 @@ new Vue({
         count: '0',
         x: '0',
         y: '0',
-        result: '',
+        result: 'yellow',
         attachRed: false,
         fruits: ['Apple', 'Banana', 'Orange', 'Pineapple'],
         persons: [{
@@ -36,7 +36,11 @@ new Vue({
         },
         counter: function () {
             this.count++;
-            this.result = this.count > 5 ? 'green' : 'red'
+            this.result = this.count > 3 ? 'green' : 'red'
+        },
+        ResetCounter: function(){
+            this.count = 0;
+            this.result = 'yellow';
         },
         updateCoordinate: function (event) {
             this.x = event.clientX;
@@ -51,7 +55,8 @@ new Vue({
             var vm = this;
             setTimeout(function () {
                 vm.count = 0;
-            }, 2000);
+                vm.result = 'yellow';
+            }, 5000);
         }
     }
 })
