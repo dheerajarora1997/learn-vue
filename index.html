@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container py-3">
+            <div class="bg-light p-3 mb-3">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="fot-weight-light">Template Syntax</h4>
+                        <p class="mb-2">{{ welcomeMessage }}</p>
+                        <p class="mb-2" v-once> v-once Example : {{ welcomeMessage }}</p>
+                        <p class="mb-2"> {{ welcomeMessage.split('').reverse().join('') }}</p>
+                        <p class="mb-2"> Computed Example : {{ computedWelcomeMessage }}</p>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="fot-weight-light">Click Event</h4>
+                        <button v-on:click="reverseMessage" class="btn btn-primary"> Reverse Welcome Message</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <h4 class="fot-weight-light">Bind Method with Tooltip</h4>
+                <div class="d-inline-block bg-info p-2" v-bind:title="bindingMethod" data-bs-toggle="tooltip"
+                    data-bs-placement="right">
+                    Hover me to get last load time
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">If/Else condition example</h4>
+                    </div>
+                    <div class="col-6" v-if="ifCondition">
+                        <div class="bg-success p-4 mb-2">
+                            If Element
+                        </div>
+                    </div>
+                    <div class="col-6" v-else>
+                        <div class="bg-info p-4 mb-2">
+                            Else Element
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-3 p-3 ">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">For Loop Example</h4>
+                    </div>
+                    <div class="col-4">
+                        <ol>
+                            <li v-for="(list, index) in listExample"> {{ list.listItem }} - {{index}} </li>
+                        </ol>
+                    </div>
+                    <div class="col-8">
+                        <span class="alert alert-info"><code
+                                class="bg-light p-2 rounded">app.listExample.push({ listItem: 'orange' })</code> - to
+                            add a new
+                            item</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">v-model Example</h4>
+                    </div>
+                    <div class="col-6">
+                        <p>{{modelExample}}</p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" v-model="modelExample" v-bind:placeholder="modelExample">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">Dynamic List Using Component</h4>
+                    </div>
+                    <div class="col-6">
+                        <ol>
+                            <my-list v-for="list in listExample" v-bind:list="list" v-bind:key="list.id">{{
+                                list.listItem }}</my-list>
+                        </ol>
+                    </div>
+                    <div class="col-6">
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">Change attribute on click</h4>
+                        <button class="btn btn-primary" v-bind:disabled="isDisabled">Disable Button</button>
+                        <button class="btn btn-secondary btn-sm" v-on:click="changeDisability">change
+                            Disability</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Full name with Watch Example</h3>
+                        <p> {{ fullNameWatch }}</p>
+                    </div>
+                    <div class="col-6">
+                        <h3>Full name with Computed Example</h3>
+                        <p> {{ fullNameComputed }}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Class Binding -->
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">Class Binding</h4>
+                    </div>
+                    <div class="col-6">
+                        <div class="static" v-bind:class="{ 'text-success': isActive, 'text-danger': hasError }">Green
+                            color Indicates the success and the red one is for error/danger</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="static" v-bind:class="[ !isActive ? 'text-success':'text-danger' ]"> Green color
+                            Indicates the success and the red one is for error/danger</div>
+                    </div>
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">Binding Class Object</h4>
+                    </div>
+                    <div class="col-6">
+                        <div v-bind:class="multiClass">Binding Class Object here</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="fot-weight-light">Class Binding with Components</h4>
+                    </div>
+                    <div class="col-6">
+                        <ol>
+                            <my-list v-for="list in listExample"
+                                v-bind:class="[ list.purchased ? 'text-success':'text-danger' ]" v-bind:list="list"
+                                v-bind:key="list.id">{{ list.listItem }}</my-list>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="font-weight-light">v-if with v-for / condition and Loop</h3>
+                    </div>
+                    <div class="col-4">
+                        <ol v-if="renderList">
+                            <my-list v-for="list in listExample" v-bind:list="list" v-bind:key="list.id">
+                                {{list.listItem}}</my-list>
+                        </ol>
+                    </div>
+                    <div class="col-8">
+                        <div class="alert alert-info">
+                            Note : Don't add <code class="bg-light p-2 rounded">v-if and v-for</code> on same element
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="font-weight-light">v-for with an Object</h3>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li v-for="pageDetail in pageDetailObject" v-bind:key="pageDetail">{{pageDetail}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="font-weight-light">v-for with an Object with name</h3>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li v-for="(pageDetail, pageDetailLabel, index) in pageDetailObject"
+                                v-bind:key="pageDetail">{{index}} {{pageDetailLabel}} : {{pageDetail}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="font-weight-light">Mutation Methods</h3>
+                        <div class="d-flex">
+                            <code class="col me-2 bg-white p-2 d-inline-block">push() <br /> to add item at end</code>
+                            <code class="col me-2 bg-white p-2 d-inline-block">pop() <br /> to delete last item</code>
+                            <code
+                                class="col me-2 bg-white p-2 d-inline-block">shift() <br /> to delete first item</code>
+                            <code
+                                class="col me-2 bg-white p-2 d-inline-block">unshift() <br /> to add item at top</code>
+                            <code
+                                class="col me-2 bg-white p-2 d-inline-block">splice() <br /> to delete all item after selected</code>
+                            <code
+                                class="col me-2 bg-white p-2 d-inline-block">sort() <br /> to sort Array, Object</code>
+                            <code
+                                class="col me-2 bg-white p-2 d-inline-block">reverse() <br /> to reverse whole array, object or element</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light mb-2 p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="font-weight-light">filter()</h3>
+                    </div>
+                    <div class="col-4">
+                        <h5>Plain Array value</h5>
+                        {{numbers}}
+                    </div>
+                    <div class="col-4">
+                        <h5>Even numbers by Computed</h5>
+                        <template v-for="(evenNumber, index) in evenNumbers">{{evenNumber}}</template>
+                    </div>
+                    <div class="col-4">
+                        <h5>Even numbers by Methods</h5>
+                        <template v-for="num in even(numbers)">{{num}}</template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+</body>
+
+</html>
